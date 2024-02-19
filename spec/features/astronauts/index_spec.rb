@@ -81,5 +81,25 @@ RSpec.describe 'Astronaut Show Page', type: :feature do
             expect("Apollo 11").to appear_before("Gemini 4")
          end
       end
+
+      it 'has the total time in space for each astronaut' do
+         visit "/astronauts"
+
+         within "#astronaut-#{@neil.id}" do
+            expect(page).to have_content("Total Time in Space: 62 days")            
+         end
+
+         within "#astronaut-#{@yuri.id}" do
+            expect(page).to have_content("Total Time in Space: 8 days")              
+         end
+
+         within "#astronaut-#{@alan.id}" do
+            expect(page).to have_content("Total Time in Space: 58 days")            
+         end
+
+         within "#astronaut-#{@buzz.id}" do
+            expect(page).to have_content("Total Time in Space: 12 days")            
+         end
+      end
    end
 end
