@@ -1,0 +1,7 @@
+<h1><%= @astronaut.name %></h1>
+<h3>Missions:</h3>
+<% @astronaut.missions.alpha_ordered_missions.each do |mission| %>
+   <ul>
+      <li><%= mission.title %></li>
+   </ul>
+<% end %>
