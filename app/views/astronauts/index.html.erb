@@ -5,6 +5,12 @@
       <h3>Name: <%= astronaut.name %></h3>
       <p>Age: <%= astronaut.age %></p>
       <p>Position: <%= astronaut.job %></p>
+      <h4>Missions: </h4>
+      <% astronaut.missions.alpha_ordered_missions.each do |mission| %>
+         <ul>
+            <li><%= mission.title %></li>
+         </ul>
+      <% end %>
    </div>
 <% end %>
 

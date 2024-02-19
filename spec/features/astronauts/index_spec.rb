@@ -8,10 +8,10 @@ RSpec.describe 'Astronaut Show Page', type: :feature do
          @alan = Astronaut.create!(name: "Alan Shepard", age: 70, job: "Pilot")
          @buzz = Astronaut.create!(name: "Buzz Aldrin", age: 78, job: "Co-Pilot")
          
-         @apollo = Mission.create!(title: "Apollo 11", time_in_space: 8)
+         @skylab = Mission.create!(title: "Skylab", time_in_space: 50)
          @gemini = Mission.create!(title: "Gemini 4", time_in_space: 4)
          @syz = Mission.create!(title: "Soyuz 11", time_in_space: 8)
-         @skylab = Mission.create!(title: "Skylab", time_in_space: 50)
+         @apollo = Mission.create!(title: "Apollo 11", time_in_space: 8)
       
 
          AstronautMission.create!(mission_id: @apollo.id, astronaut_id: @neil.id)
@@ -62,26 +62,23 @@ RSpec.describe 'Astronaut Show Page', type: :feature do
          visit "/astronauts"
 
          within "#astronaut-#{@neil.id}" do
-            expect(page).to have_content("Apollo 11")
-            
+            expect("Apollo 11").to appear_before("Gemini 4")
+            expect("Gemini 4").to appear_before("Skylab")            
          end
 
          within "#astronaut-#{@yuri.id}" do
-            expect(page).to have_content("Yuri Gagarin")
-            expect(page).to have_content("Age: 56")
-            expect(page).to have_content("Position: Engineer")
+            expect(page).to have_content("Missions:")
+            expect(page).to have_content("Soyuz 11")       
          end
 
          within "#astronaut-#{@alan.id}" do
-            expect(page).to have_content("Alan Shepard")
-            expect(page).to have_content("Age: 70")
-            expect(page).to have_content("Position: Pilot")
+            expect(page).to have_content("Missions:")
+            expect("Apollo 11").to appear_before("Skylab")
          end
 
          within "#astronaut-#{@buzz.id}" do
-            expect(page).to have_content("Buzz Aldrin")
-            expect(page).to have_content("Age: 78")
-            expect(page).to have_content("Position: Co-Pilot")
+            expect(page).to have_content("Missions:")
+            expect("Apollo 11").to appear_before("Gemini 4")
          end
       end
    end
