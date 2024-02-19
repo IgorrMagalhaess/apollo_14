@@ -32,5 +32,22 @@ RSpec.describe "Astronaut Show Page" do
          expect(page).to have_content(@gemini.title)
          expect(page).to have_content(@skylab.title)
       end
+
+      it 'has a form to add an id of an existing mission to add mission to astronaut' do
+         visit "/astronauts/#{@yuri.id}"
+
+         expect(page).to_not have_content(@gemini.title)
+
+         expect(page).to have_content("Add Mission to Astronaut:")
+         expect(page).to have_field(:mission_id)
+         expect(page).to have_button("Add Mission")
+
+         fill_in(:mission_id, with: @gemini.id)
+
+         click_button("Add Mission")
+
+         expect(current_path).to eq("/astronauts/#{@yuri.id}")
+         expect(page).to have_content(@gemini.title)
+      end
    end
 end

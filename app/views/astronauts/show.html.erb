@@ -5,3 +5,11 @@
       <li><%= mission.title %></li>
    </ul>
 <% end %>
+
+<h3>Add Mission to Astronaut:</h3>
+<%= form_with url: "/astronauts/#{@astronaut.id}/missions", method: :post do |form| %>
+   <%= form.label :mission_id %>
+   <%= form.number_field :mission_id %>
+
+   <%= form.submit "Add Mission" %>
+<% end %>
