@@ -8,10 +8,10 @@ RSpec.describe 'Astronaut Show Page', type: :feature do
          @alan = Astronaut.create!(name: "Alan Shepard", age: 70, job: "Pilot")
          @buzz = Astronaut.create!(name: "Buzz Aldrin", age: 78, job: "Co-Pilot")
          
-         @apollo = Mission.create!(name: "Apollo 11", time_in_space: 8)
-         @gemini = Mission.create!(name: "Gemini 4", time_in_space: 4)
-         @syz = Mission.create!(name: "Soyuz 11", time_in_space: 8)
-         @skylab = Mission.create!(name: "Skylab", time_in_space: 50)
+         @apollo = Mission.create!(title: "Apollo 11", time_in_space: 8)
+         @gemini = Mission.create!(title: "Gemini 4", time_in_space: 4)
+         @syz = Mission.create!(title: "Soyuz 11", time_in_space: 8)
+         @skylab = Mission.create!(title: "Skylab", time_in_space: 50)
       
 
          AstronautMission.create!(mission_id: @apollo.id, astronaut_id: @neil.id)
