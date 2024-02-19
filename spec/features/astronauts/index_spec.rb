@@ -57,5 +57,32 @@ RSpec.describe 'Astronaut Show Page', type: :feature do
 
          expect(page).to have_content("Average Age of Astronauts: 71.5 years old")
       end
+
+      it 'has a list of the spage missions in alphabetical order for each astronaut' do
+         visit "/astronauts"
+
+         within "#astronaut-#{@neil.id}" do
+            expect(page).to have_content("Apollo 11")
+            
+         end
+
+         within "#astronaut-#{@yuri.id}" do
+            expect(page).to have_content("Yuri Gagarin")
+            expect(page).to have_content("Age: 56")
+            expect(page).to have_content("Position: Engineer")
+         end
+
+         within "#astronaut-#{@alan.id}" do
+            expect(page).to have_content("Alan Shepard")
+            expect(page).to have_content("Age: 70")
+            expect(page).to have_content("Position: Pilot")
+         end
+
+         within "#astronaut-#{@buzz.id}" do
+            expect(page).to have_content("Buzz Aldrin")
+            expect(page).to have_content("Age: 78")
+            expect(page).to have_content("Position: Co-Pilot")
+         end
+      end
    end
 end
