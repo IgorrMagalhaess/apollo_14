@@ -45,7 +45,7 @@ RSpec.describe 'Astronaut Show Page', type: :feature do
             expect(page).to have_content("Position: Pilot")
          end
 
-         within "#astronaut-#{@neil.id}" do
+         within "#astronaut-#{@buzz.id}" do
             expect(page).to have_content("Buzz Aldrin")
             expect(page).to have_content("Age: 78")
             expect(page).to have_content("Position: Co-Pilot")
