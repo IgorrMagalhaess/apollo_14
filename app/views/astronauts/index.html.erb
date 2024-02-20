@@ -1,0 +1,18 @@
+<h1>Famous Astronauts</h1>
+
+<% @astronauts.each do |astronaut| %>
+   <div id="astronaut-<%= astronaut.id %>">
+      <h3>Name: <%= astronaut.name %></h3>
+      <p>Age: <%= astronaut.age %></p>
+      <p>Position: <%= astronaut.job %></p>
+      <h4>Missions: </h4>
+      <% astronaut.missions.alpha_ordered_missions.each do |mission| %>
+         <ul>
+            <li><%= mission.title %></li>
+         </ul>
+      <% end %>
+      <h4>Total Time in Space: <%= astronaut.total_time_space %> days</h4>
+   </div>
+<% end %>
+
+<h5>Average Age of Astronauts: <%= @astronauts.average_age %> years old</h5>
